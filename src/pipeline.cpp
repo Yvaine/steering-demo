@@ -108,6 +108,8 @@ SteeringPipe::SteeringPipe() {}
 SteeringPipe::~SteeringPipe() {
 	targeters.clear();
 	constraints.clear();
+	delete constraint;
+	delete targeter;
 }
 
 void SteeringPipe::setActor() {

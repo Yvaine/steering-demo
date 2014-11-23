@@ -121,6 +121,7 @@ public:
 	
 	AvoidSpheresConstraint *constraint;
 	std::list<BaseObstacleConstraint*> constraints;
+	GoalTargeter *targeter;
 	
 	SteeringPipe();
 	~SteeringPipe();
@@ -128,7 +129,6 @@ public:
 	void setActor();
 	Kinematic& getKinematic();
 	Path& getPath();
-	GoalTargeter *targeter;
 
 	void popTarget() {
 		targeters.pop_front();

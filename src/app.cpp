@@ -9,7 +9,7 @@ Application::Application() : help(false)
 
 void Application::initGraphics()
 {
-    glClearColor(0.7,0.7,0.7,1.0);
+    glClearColor(0.7f,0.7f,0.7f,1.0f);
     glEnable(GL_DEPTH_TEST);
     glShadeModel(GL_SMOOTH);
 

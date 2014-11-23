@@ -153,7 +153,7 @@ void SteeringPipelineDemo::display()
 	glDisable(GL_LIGHTING);
 
     // Draw some scale lines
-    glColor3f(0.8, 0.8, 0.8);
+    glColor3f(0.8f, 0.8f, 0.8f);
     glBegin(GL_LINES);
     for (int i = -WORLD_SIZE; i <= WORLD_SIZE; i += GRID_SIZE) {
 
