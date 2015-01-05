@@ -12,11 +12,6 @@ unsigned TimingData::getTime() {
 	return systemTime();
 }
 
-// Sets up the timing system and registers the performance timer.
-void initTime() {
-	LONGLONG time;
-}
-
 // Holds the global frame time that is passed around
 static TimingData *timingData = NULL;
 
@@ -36,9 +31,6 @@ void TimingData::update() {
 }
 
 void TimingData::init() {
-	// Set up the timing system.
-    initTime();
-	
 	// Create the frame info object
     if (!timingData) timingData = new TimingData();
 
