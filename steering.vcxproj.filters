@@ -39,6 +39,9 @@
     <ClInclude Include="include\steering_incl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\CGI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\math.cpp">
@@ -64,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="src\demo.cpp">
       <Filter>Common Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CGI.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

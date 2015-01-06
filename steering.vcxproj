@@ -67,6 +67,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\CGI.h" />
     <ClInclude Include="include\locomotion.h" />
     <ClInclude Include="include\pipeline.h" />
     <ClInclude Include="include\steering.h" />
@@ -77,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\app.cpp" />
+    <ClCompile Include="src\CGI.cpp" />
     <ClCompile Include="src\demo.cpp" />
     <ClCompile Include="src\locomotion.cpp" />
     <ClCompile Include="src\main.cpp" />

@@ -110,12 +110,6 @@ bool SteeringPipelineDemo::key(unsigned char key)
 }
 
 
-inline void vectorAsGLVertex(const Vector3 &v)
-{
-	glVertex3f(v.x, v.y, v.z);
-}
-
-
 void SteeringPipelineDemo::display()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -132,38 +126,19 @@ void SteeringPipelineDemo::display()
 
 	// Draw the path
 	const Path & path = pipe->getPath();
-	glColor3f(0.0f, 0.6f, 0.0f);
-	glBegin(GL_LINES);
-	vectorAsGLVertex(path.goal.position);
-	vectorAsGLVertex(pipe->getKinematic().position);
-	glEnd();
+
+	g_CGI->drawLine(g_CGI->RED, path.goal.position, pipe->getKinematic().position);
 
 	// Draw the obstacles
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
-	glColor3f(0.4f, 0.4f, 0.4f);
 	for (unsigned i = 0; i < OBSTACLES; i++) {
 		const Sphere &o = obstacles[i];
-
-		glPushMatrix();
-		glTranslatef(o.position.x, o.position.y, o.position.z);
-		glutSolidSphere(o.radius, 12, 12);
-		glPopMatrix();
+		g_CGI->drawSphere(g_CGI->GREY, o.position, o.radius);
 	}
 	glDisable(GL_LIGHTING);
 
-    // Draw some scale lines
-    glColor3f(0.8f, 0.8f, 0.8f);
-    glBegin(GL_LINES);
-    for (int i = -WORLD_SIZE; i <= WORLD_SIZE; i += GRID_SIZE) {
-
-        glVertex3i(-WORLD_SIZE, -1, i);
-        glVertex3i(WORLD_SIZE, -1, i);
-
-        glVertex3i(i, -1, WORLD_SIZE);
-        glVertex3i(i, -1, -WORLD_SIZE);
-    }
-    glEnd();
+	g_CGI->drawGrid(g_CGI->GREY, -WORLD_SIZE, WORLD_SIZE, GRID_SIZE);
 }
 
 #define TRIM_WORLD(var) \

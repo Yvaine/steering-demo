@@ -2,6 +2,7 @@
 #define __STEERING_INCL__
 
 #include "time.h"
+#include "CGI.h"
 #include "vmath.h"
 
 #include "locomotion.h"

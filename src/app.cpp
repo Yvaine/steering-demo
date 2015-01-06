@@ -9,29 +9,19 @@ Application::Application() : help(false)
 
 void Application::initGraphics()
 {
-    glClearColor(0.7f,0.7f,0.7f,1.0f);
-    glEnable(GL_DEPTH_TEST);
-    glShadeModel(GL_SMOOTH);
+	g_CGI->init();
 
     setView();
 }
 
 void Application::setView()
 {
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(60.0, float(width)/float(height), 1, 500.0);
-    glMatrixMode(GL_MODELVIEW);
+	g_CGI->setView(width, height);
 }
 
 void Application::display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
-
-    glBegin(GL_LINES);
-    glVertex2i(1, 1);
-    glVertex2i(639, 319);
-    glEnd();
 }
 
 const char* Application::getTitle()
@@ -68,8 +58,7 @@ void Application::resize(int width, int height)
     // Set the internal variables and update the view
     Application::width = width;
     Application::height = height;
-    glViewport(0, 0, width, height);
-    setView();
+	g_CGI->setResize(width, height);
 }
 
 void Application::mouse(int button, int state, int x, int y)
@@ -80,25 +69,13 @@ void Application::mouse(int button, int state, int x, int y)
 
 void Application::renderActor(const Location &loc)
 {
-	glColor3f(1.0f, 0.8f, 0.0f);
-    glPushMatrix();
-    glTranslatef(loc.position.x, loc.position.y, loc.position.z);
-    glRotatef(loc.orientation * _180_PI, 0.0f, 1.0f, 0.0f);
-	glutWireCube(3.0f);
-
-	glTranslatef(0, 0, 1.5);
-	glutSolidCube(1.5f);
-
-    glPopMatrix();
+	g_CGI->drawActor(g_CGI->ORANGE, loc);
+	g_CGI->drawText(g_CGI->GREEN, loc.position, GLUT_STROKE_ROMAN, "1234");
 }
 
 void Application::renderSpot(const Vector3 &pos)
 {
-	glColor3f(1.0f, 0.0f, 0.0f);
-	glPushMatrix();
-	glTranslatef(pos.x, pos.y, pos.z);
-	glutSolidSphere(0.5f, 12, 12);
-	glPopMatrix();
+	g_CGI->drawSphere(g_CGI->YELLOW, pos, 1.f);
 }
 
 static const char *helpHidden[] = {
